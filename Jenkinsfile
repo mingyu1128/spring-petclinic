@@ -6,11 +6,11 @@ pipeline {
     maven "M3"
   }
   stages {
-    stage () {
+    stage ('Git clone') {
       steps {
-        echo "Git clone"
+        echo 'Git clone'
         git url: 'https://github.com/mingyu1128/spring-petclinic.git',
-          branch: 'efficient-webjars'
+            branch: 'efficient-webjars'
       }
     }
   }
