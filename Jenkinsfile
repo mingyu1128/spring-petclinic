@@ -54,11 +54,12 @@ pipeline {
     }
     stage('Push Docker Image') {
       steps {
-        echo "Push Docker Image to ECR"
+        echo 'Push Docker Image to ECR'
         script {
           sh 'rm -f ~/.dockercfg ~/.docker/config.json || true'
           docker.withRegistry("https://${ECR_REPOSITORY}", "ecr:${REGION}:${AWS_CREDENTIAL_NAME}") {
             docker.image("${ECR_DOCKER_IMAGE}:latest").push()
+            
           }
         }
       }
