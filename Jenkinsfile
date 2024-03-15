@@ -58,8 +58,7 @@ pipeline {
         script {
           sh 'rm -f ~/.dockercfg ~/.docker/config.json || true'
           docker.withRegistry("https://${ECR_REPOSITORY}", "ecr:${REGION}:${AWS_CREDENTIAL_NAME}") {
-            docker.image("${ECR_DOCKER_IMAGE}:latest").push()
-            
+            docker.image("${ECR_DOCKER_IMAGE}:latest").push()    
           }
         }
       }
