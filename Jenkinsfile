@@ -80,6 +80,10 @@ pipeline {
             s3Upload(file:"deploy.zip", bucket:"std06-codedeploy-bucket")
           }
           sh 'rm -rf ./deploy.zip'
+        }
+      }
+    }
+    
     stage('Codedeploy Workload') {
       steps {
         echo "create Codedeploy group"   
@@ -103,4 +107,3 @@ pipeline {
       }
     }
   }
-}
