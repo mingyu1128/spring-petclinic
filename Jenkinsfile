@@ -90,7 +90,7 @@ pipeline {
           sh '''
             aws deploy create-deployment-group \
             --application-name std06-code-deploy \
-            --auto-scaling-groups std06-asg \
+            --auto-scaling-groups std06-asg-target \
             --deployment-group-name std06-code-deploy-${BUILD_NUMBER} \
             --deployment-config-name CodeDeployDefault.OneAtATime \
             --service-role-arn arn:aws:iam::257307634175:role/std06-codedeploy-service-role
