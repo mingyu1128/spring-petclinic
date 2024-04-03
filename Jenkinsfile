@@ -4,7 +4,7 @@ pipeline {
   tools {
     jdk "jdk17"
     maven "M3"
-  }
+    }
 //환경 설정
   environment {
       AWS_CREDENTIAL_NAME ="AWSCredentials"
@@ -12,18 +12,18 @@ pipeline {
       DOCKER_IMAGE_NAME = "std06-spring-petclinic"
       ECR_REPOSITORY = "257307634175.dkr.ecr.ap-northeast-2.amazonaws.com"
       ECR_DOCKER_IMAGE = "${ECR_REPOSITORY}/${DOCKER_IMAGE_NAME}"
-  }
+      }
   stages {
     stage ('Git clone') {
       steps {
         echo 'Git clone'
         git url: 'https://github.com/mingyu1128/spring-petclinic.git',
             branch: 'efficient-webjars', credentialsId: 'GitCredentials'
-      }
+            }
       post {
         success {
           echo 'Git clone Success!!'
-        }
+                }
         failure {
           echo 'Git clone fail'
         }
@@ -103,7 +103,7 @@ pipeline {
            --s3-location bucket=std06-codedeploy-bucket,bundleType=zip,key=deploy.zip
          '''
        sleep(10) // sleep 10s
-        }
       }
     }
   }
+}
