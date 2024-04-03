@@ -1,20 +1,23 @@
-version: '3.9'
+version: "2.2"
+
 services:
-  jenkins:
-    build:
-      context: ""
-      args:
-        DOCKER_GID: ${DOCKER_GID}
-    container_name: jenkins
-    user: root
-    privileged: true
-    environment:
-      TZ: "Asia/Seoul"
-      JAVA_OPTS: "-Dhudson.model.DownloadService.noSignatureCheck=true"
-      DOCKER_GID: ${DOCKER_GID}
+  mysql:
+    image: mysql:5.7
     ports:
-      - "8080:8080"
-      - "50000:50000"
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=petclinic
+      - MYSQL_PASSWORD=petclinic
+      - MYSQL_DATABASE=petclinic
     volumes:
-      - "./jenkins:/var/jenkins_home"
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./conf.d:/etc/mysql/conf.d:ro"
+  postgres:
+    image: postgres:14.1
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=petclinic
+      - POSTGRES_USER=petclinic
+      - POSTGRES_DB=petclinic
