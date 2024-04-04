@@ -18,8 +18,8 @@ pipeline {
         stage('Git clone'){
             steps {
                 echo 'Git clone'
-                git url: 'https://github.com/cms1882/spring-petclinic.git',
-                    branch: 'efficient-webjars', credentialsId: 'GitCredentials'
+                git url: 'https://github.com/mingyu1128/spring-petclinic.git',
+                    branch: 'efficient-webjars', credentialsID: 'GitCredentials'
             }   
             post {
                 success {
