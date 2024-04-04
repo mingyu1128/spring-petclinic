@@ -5,7 +5,8 @@ pipeline {
         jdk "jdk17"
         maven "M3"
     }
-   // 환경 설정 
+   // 환경 설정
+    echo 'Code Deploy ENV TEST'
     environment {
         AWS_CREDENTIAL_NAME = "AWSCredentials"
         REGION = "ap-northeast-2"
