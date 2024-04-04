@@ -6,7 +6,7 @@ pipeline {
         maven "M3"
     }
    // 환경 설정
-    echo 'Code Deploy ENV TEST'
+    
     environment {
         AWS_CREDENTIAL_NAME = "AWSCredentials"
         REGION = "ap-northeast-2"
@@ -108,6 +108,7 @@ pipeline {
                     --s3-location bucket=std06-codedeploy-bucket,bundleType=zip,key=deploy.zip
                     '''
                     sleep(10) // sleep 10s
+                echo 'Code Deploy ENV TEST'
             }
         }
 
